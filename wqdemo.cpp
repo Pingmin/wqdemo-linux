@@ -63,6 +63,12 @@ int main()
     return -1;
   }
 
+  if (!VN_PLAY_SetDecodePassword(NPORT, "123456"))
+  {
+     printf("VN_PLAY_InputData failed\n");
+     return -1;
+  }
+
 /***
   if(VN_PLAY_OpenFile(NPORT,"test.vdg")==0)
   {
@@ -94,7 +100,7 @@ int main()
 *****/
 
     memset(buf, 0, sizeof(buf));
-		size = fread(buf, sizeof(unsigned char), sizeof(buf), fp);
+    size = fread(buf, sizeof(unsigned char), sizeof(buf), fp);
 
     if (0 == size)
     {
