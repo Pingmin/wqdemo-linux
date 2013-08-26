@@ -9,9 +9,11 @@
  *   20130823 - call the setting password interface, by Liu Zeping
  *   20130824 - update makefile and 360 yunpan's link, by Liu Zeping
  *              update wq decoder libs, by Zhou Haitao on 20130823
+ *   20130826 - sync to github and this will be the last history line
  *
  * More:
- *   http://yunpan.cn/QXPz7PnFphGi9
+ *   https://github.com/Pingmin/wqdemo-linux
+ *   old location: http://yunpan.cn/QXPz7PnFphGi9
  *
  */
 
