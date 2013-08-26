@@ -6,9 +6,12 @@
  * History:
  *   20130821 - new created, by Zhou Haitao
  *   20130821 - replace _OpenFile() by _OpenStream(), by Liu Zeping
+ *   20130823 - call the setting password interface, by Liu Zeping
+ *   20130824 - update makefile and 360 yunpan's link, by Liu Zeping
+ *              update wq decoder libs, by Zhou Haitao on 20130823
  *
  * More:
- *   http://yunpan.cn/QXHiyqZk8G78W
+ *   http://yunpan.cn/QXPz7PnFphGi9
  *
  */
 

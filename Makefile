@@ -1,5 +1,5 @@
 
-VERSION = 1.0
+VERSION = 1.3
 
 CC = g++
 
@@ -15,8 +15,8 @@ CC_SRC = $(wildcard  *.cpp)
 C_SRC = $(wildcard  *.c)
 
 # OBJECTS
-CC_OBJS = $(patsubst %.cpp,./build/%.o,$(CC_SRC))
-C_OBJS = $(patsubst %.c,./build/%.o,$(C_SRC))
+CC_OBJS = $(patsubst %.cpp,./%.o,$(CC_SRC))
+C_OBJS = $(patsubst %.c,./%.o,$(C_SRC))
 OBJS = $(CC_OBJS) $(C_OBJS)
 
 # DEPS
@@ -51,19 +51,19 @@ include $(DEPS)
 $(EXE):$(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-./build/%.o:%.cpp
+./%.o:%.cpp
 	$(CC) $(OPTIONS) -o $@ -c $< $(CPPFLAGS)
 
-./build/%.o:%.c
+./%.o:%.c
 	$(CC) $(OPTIONS) -o $@ -c $< $(CPPFLAGS)
 
-./build/%.d:%.cpp
+./%.d:%.cpp
 	@set -e; rm -f $@; \
 	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,.*\.o[ :]*,$(patsubst %.d,%.o,$@) $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 
-./build/%.d:%.c
+./%.d:%.c
 	@set -e; rm -f $@; \
 	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,.*\.o[ :]*,$(patsubst %.d,%.o,$@) $@ : ,g' < $@.$$$$ > $@; \
@@ -74,3 +74,4 @@ clean:
 	rm -f $(EXE)
 	rm -f $(DEPS)
 	rm -f $(OBJS)
+
