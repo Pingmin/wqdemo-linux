@@ -1,5 +1,5 @@
 
-VERSION = 1.3
+VERSION = 1.0.3
 
 CC = g++
 
@@ -35,6 +35,8 @@ LIB_DIR = -L. -L./lib
 LIBS = -lwqplaysdk
 
 LDFLAGS = $(LIB_DIR) $(LIBS)
+
+DFLAGS = -DLINUX
 
 CPPFLAGS = $(SOPTIONS) $(INC_DIR) $(DFLAGS)
 
