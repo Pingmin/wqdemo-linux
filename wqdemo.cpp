@@ -36,7 +36,10 @@ FRAME_INFO * pFrameInfo,
 long nReserved1,
 long nReserved2)
 {
-  printf("DecCBFun\n");
+  printf("DecCBFun, width: %ld, height: %ld, size: %ld, real size: %ld\n",
+          pFrameInfo->nWidth, pFrameInfo->nHeight,
+          pFrameInfo->nWidth * pFrameInfo->nHeight * 3/2, nSize);
+
   FILE* pf = fopen("test.yuv","ab+");
   fwrite(pBuf,nSize,1,pf);
   fclose(pf);
