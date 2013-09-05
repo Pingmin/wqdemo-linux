@@ -47,6 +47,11 @@ long nReserved2)
 
 void CALLBACK NeedDecodePasswordFun(long nPort, int nErrorCode, void* pUser)
 {
+  printf("NeedDecodePasswordFun, nPort: %d, errorCode: %d, pUser: 0x%x\n", nPort, nErrorCode, pUser);
+  if (!VN_PLAY_SetDecodePassword(nPort, "123456"))
+  {
+     printf("NeedDecodePasswordFun, VN_PLAY_SetDecodePassword failed\n");
+  }
 }
 
 int main()
@@ -65,16 +70,10 @@ int main()
     printf("VN_PLAY_SetDecCallBack failed\n");
     return -1;
   }
-  if(VN_PLAY_SetNeedDecodePasswordCallbackFun(NPORT, NeedDecodePasswordFun,NULL) == 0)
+  if(VN_PLAY_SetNeedDecodePasswordCallbackFun(NPORT, NeedDecodePasswordFun, NULL) == 0)
   {
     printf("VN_PLAY_SetNeedDecodePasswordCallbackFun failed\n");
     return -1;
-  }
-
-  if (!VN_PLAY_SetDecodePassword(NPORT, "123456"))
-  {
-     printf("VN_PLAY_InputData failed\n");
-     return -1;
   }
 
 /***
@@ -93,6 +92,14 @@ int main()
   if (VN_PLAY_Play(NPORT, 0) == 0)
   {
      printf("VN_PLAY_Play failed\n");
+     return -1;
+  }
+
+  // NOTE: this should be after calling VN_PLAY_Play()
+  //NeedDecodePasswordFun(NPORT, 1, NULL);
+  if (!VN_PLAY_SetDecodePassword(NPORT, "123456"))
+  {
+     printf("VN_PLAY_SetDecodePassword failed\n");
      return -1;
   }
 
