@@ -97,11 +97,11 @@ int main()
 
   // NOTE: this should be after calling VN_PLAY_Play()
   //NeedDecodePasswordFun(NPORT, 1, NULL);
-  if (!VN_PLAY_SetDecodePassword(NPORT, "123456"))
+  /*if (!VN_PLAY_SetDecodePassword(NPORT, "123456"))
   {
      printf("VN_PLAY_SetDecodePassword failed\n");
      return -1;
-  }
+  }*/
 
   while (!feof(fp))
   {
